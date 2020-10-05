@@ -1,0 +1,12 @@
+﻿  GameManager.cpp
+  Main.cpp
+  MMath.cpp
+  Scene0.cpp
+C:\Users\kylet\Documents\College Programming Projects\C++ Projects\SDLFrameworkCopy\SDL_Project\Scene0.cpp(65,85): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\kylet\Documents\College Programming Projects\C++ Projects\SDLFrameworkCopy\SDL_Project\Scene0.cpp(65,78): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\kylet\Documents\College Programming Projects\C++ Projects\SDLFrameworkCopy\SDL_Project\Scene0.cpp(65,73): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+  Timer.cpp
+  VMath.cpp
+  Window.cpp
+  Generating Code...
+  SDL_Project.vcxproj -> C:\Users\kylet\Documents\College Programming Projects\C++ Projects\SDLFrameworkCopy\Debug\SDL_Project.exe
