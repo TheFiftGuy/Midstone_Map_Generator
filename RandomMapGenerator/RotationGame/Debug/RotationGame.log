@@ -1,12 +1,2 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Scene0.cpp
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(62,23): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(63,23): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(67,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(68,25): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(78,34): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(79,34): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(83,87): warning C4244:  'argument': conversion from 'float' to 'Uint8', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(83,80): warning C4244:  'argument': conversion from 'float' to 'Uint8', possible loss of data
-D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Scene0.cpp(83,73): warning C4244:  'argument': conversion from 'float' to 'Uint8', possible loss of data
-  RotationGame.vcxproj -> D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\Debug\MapGenerator.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  RotationGame.vcxproj -> C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\Debug\MapGenerator.exe
