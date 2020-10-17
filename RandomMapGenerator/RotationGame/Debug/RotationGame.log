@@ -1,13 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   GameManager.cpp
-  Player.cpp
   Scene0.cpp
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\Scene0.cpp(38,18): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\Scene0.cpp(38,18): warning C4154: deletion of an array expression; conversion to pointer supplied
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\Scene0.cpp(159,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\Scene0.cpp(160,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\Scene0.cpp(192,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\Scene0.cpp(193,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Tile.cpp
+C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\Scene0.cpp(36,18): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
+C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\Scene0.cpp(36,18): warning C4154: deletion of an array expression; conversion to pointer supplied
+C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\Scene0.cpp(155,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\Scene0.cpp(156,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Generating Code...
-  RotationGame.vcxproj -> F:\Visual Studio Projects\Midstone\RandomMapGenerator\Debug\MapGenerator.exe
+  RotationGame.vcxproj -> C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\Debug\MapGenerator.exe

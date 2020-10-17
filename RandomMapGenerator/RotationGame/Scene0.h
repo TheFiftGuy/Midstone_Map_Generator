@@ -25,7 +25,7 @@ private:
 	SDL_Rect* clip;
 
 	int currentRoomCount = 0;
-	int roomCount = 10;
+	int roomCount = 10;  //change these numbers for # of rooms
 	Tile* roomArray[10];
 	Vec3 screenCoordsArray[10];
 	SDL_Rect rectArray[10];
