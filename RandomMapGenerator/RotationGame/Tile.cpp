@@ -2,6 +2,7 @@
 
 Tile::Tile()
 {
+	image = IMG_Load("test.png");
 }
 
 Tile::~Tile()
@@ -21,6 +22,24 @@ Tile::Tile(Vec3 pos_, Vec3 vel_, int height_, int width_)
 
 	height = height_;
 	width = width_;
+
+	image = IMG_Load("test.png");
+}
+
+Tile::Tile(Vec3 pos_, Vec3 vel_, int height_, int width_, SDL_Surface* image_)
+{
+	pos.x = pos_.x;
+	pos.y = pos_.y;
+	pos.z = pos_.z;
+
+	vel.x = vel_.x;
+	vel.y = vel_.y;
+	vel.z = vel_.z;
+
+	height = height_;
+	width = width_;
+
+	image = image_;
 }
 
 bool Tile::OnCreate()

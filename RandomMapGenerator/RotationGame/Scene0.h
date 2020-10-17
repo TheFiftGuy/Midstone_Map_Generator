@@ -24,7 +24,12 @@ private:
 	SDL_Renderer* mRender;
 	SDL_Rect* clip;
 
-	
+	int currentRoomCount = 0;
+	int roomCount = 10;
+	Tile* roomArray[10];
+	Vec3 screenCoordsArray[10];
+	SDL_Rect rectArray[10];
+
 public:
 	Scene0(SDL_Window* sdlWindow);
 	~Scene0();
