@@ -23,7 +23,7 @@ Tile::Tile(Vec3 pos_, Vec3 vel_, int height_, int width_)
 	height = height_;
 	width = width_;
 
-	image = IMG_Load("test.png");
+	image = IMG_Load("WhiteBox.png");
 }
 
 Tile::Tile(Vec3 pos_, Vec3 vel_, int height_, int width_, SDL_Surface* image_)

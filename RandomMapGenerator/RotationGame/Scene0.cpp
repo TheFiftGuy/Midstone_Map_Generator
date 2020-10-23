@@ -17,9 +17,9 @@ bool Scene0::OnCreate()
 {
 	int w, h;
 	SDL_GetWindowSize(window,&w,&h);
-	Matrix4 ndc = MMath::viewportNDC(w, h);
-	Matrix4 ortho = MMath::orthographic(0.0, 200.0f, 0.0f, 100.0f,0.0f,1.0f);
-	projection =  ndc * ortho;
+	Matrix4 ndc = MMath::viewportNDC(w, h);//D Resolution is 800x800
+	Matrix4 ortho = MMath::orthographic(0.0f, 800.0f, 0.0f, 800.0f,0.0f,1.0f);	//D To make things simple resolution and orthgraphic are the same, for the rest of the...
+	projection =  ndc * ortho;													//D ...project we will consider 50 pixels as 1 imgaginary "unit" in a cartesian plane
 	Scene0RoomManager = new RoomManager();
 	Scene0RoomManager->GenerateRooms();
 

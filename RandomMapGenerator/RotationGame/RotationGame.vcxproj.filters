@@ -106,5 +106,8 @@
     <Image Include="test.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="WhiteBox.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
