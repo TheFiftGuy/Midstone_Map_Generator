@@ -43,12 +43,33 @@ void Scene0::Render()
 	Scene0RoomManager->Render(screenSurface, projection);
 	SDL_RenderPresent(mRender);
 	SDL_UpdateWindowSurface(window);
-
-
-
 }
 
 void Scene0::HandleEvents(const SDL_Event & event)
 {
+	if (event.type == SDL_KEYDOWN)
+	{
+		switch (event.key.keysym.scancode)
+		{
+		case SDL_SCANCODE_E:
+			Reset();
+			break;
+		}
+	}
+}
 
+/*
+Reset()
+
+Press E to clear the screen and generate a new layout
+*/
+void Scene0::Reset()
+{
+	resetCount++;
+	std::cout << "Reset Count: " << resetCount << std::endl << std::endl;;
+	Scene0RoomManager->ResetValues();
+	Scene0RoomManager->GenerateRooms();
+
+	SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
+	SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0, 0, 0));
 }

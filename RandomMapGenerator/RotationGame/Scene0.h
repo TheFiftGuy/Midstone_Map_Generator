@@ -9,7 +9,8 @@
 #include <SDL.h>
 
 using namespace MATH;
-class Scene0 : public Scene {
+class Scene0 : public Scene
+{
 private:
 	SDL_Window* window;
 	Matrix4 projection;
@@ -21,6 +22,8 @@ private:
 
 	RoomManager* Scene0RoomManager;
 
+	int resetCount = 0;
+
 public:
 	Scene0(SDL_Window* sdlWindow);
 	~Scene0();
@@ -29,6 +32,8 @@ public:
 	void Update(const float time);
 	void Render();
 	void HandleEvents(const SDL_Event &event);
+
+	void Reset();
 };
 
 #endif

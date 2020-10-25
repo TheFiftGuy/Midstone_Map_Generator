@@ -4,7 +4,8 @@
 #include "Scene0.h"
 #include <iostream>
 
-GameManager::GameManager() {
+GameManager::GameManager()
+{
 	timer = nullptr;
 	isRunning = true;
 	currentScene = nullptr;
@@ -12,32 +13,39 @@ GameManager::GameManager() {
 
 
 /// In this OnCreate() method, fuction, subroutine, whatever the word, 
-bool GameManager::OnCreate() {
+bool GameManager::OnCreate()
+{
 	const int SCREEN_WIDTH =	800;
 	const int SCREEN_HEIGHT =	800;
+
 	ptr = new Window(SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (ptr == nullptr) {
+	if (ptr == nullptr)
+	{
 		OnDestroy();
 		return false;
 	}
-	if (ptr->OnCreate() == false) {
+	if (ptr->OnCreate() == false)
+	{
 		OnDestroy();
 		return false;
 	}
 
 	timer = new Timer();
-	if (timer == nullptr) {
+	if (timer == nullptr)
+	{
 		OnDestroy();
 		return false;
 	}
 
 	currentScene = new Scene0(ptr->GetSDL_Window());
-	if (currentScene == nullptr) {
+	if (currentScene == nullptr)
+	{
 		OnDestroy();
 		return false;
 	}
 
-	if (currentScene->OnCreate() == false) {
+	if (currentScene->OnCreate() == false)
+	{
 		OnDestroy();
 		return false;
 	}
@@ -46,9 +54,11 @@ bool GameManager::OnCreate() {
 }
 
 /// Here's the whole game
-void GameManager::Run() {
+void GameManager::Run()
+{
 	timer->Start();
-	while (isRunning) {
+	while (isRunning)
+	{
 		timer->UpdateFrameTicks();
 		HandleEvents();
 		currentScene->Update(timer->GetDeltaTime());
@@ -59,21 +69,28 @@ void GameManager::Run() {
 	}
 }
 
-void GameManager::HandleEvents() {
+void GameManager::HandleEvents()
+{
 	SDL_Event Event;
-	while (SDL_PollEvent(&Event)){
-		if (Event.type == SDL_QUIT) {
+	while (SDL_PollEvent(&Event))
+	{
+		if (Event.type == SDL_QUIT)
+		{
 			isRunning = false;
+			SDL_Quit();
+			return;
 		}
-		currentScene->HandleEvents(Event);
-		
+		else
+		{
+			currentScene->HandleEvents(Event);
+		}
 	}
-
 }
 
 GameManager::~GameManager() {}
 
-void GameManager::OnDestroy(){
+void GameManager::OnDestroy()
+{
 	if (ptr) delete ptr;
 	if (timer) delete timer;
 	if (currentScene) delete currentScene;
