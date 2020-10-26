@@ -12,9 +12,8 @@ void RoomManager::GenerateRooms()
 
 			// Determines how many branches out from the starting room
 			numberOfStartingBranches = Utility::RandomNumberGenerator(1, 4);
-		}
-		else
-		{
+			std::cout << "Starting Branches: " << numberOfStartingBranches << std::endl;
+
 			for (int i = 0; i < numberOfStartingBranches; i++)
 			{
 				// checks if the generator has already generated rooms in that direction
@@ -26,9 +25,13 @@ void RoomManager::GenerateRooms()
 				}
 				else
 				{
+					directionArray[direction] = true;
 					CreateRoom(direction + 1, 0);
 				}
 			}
+		}
+		else
+		{
 			CreateRoom(Utility::RandomNumberGenerator(1, 4), currentRoomCount - 1);
 		}
 	}
@@ -148,6 +151,11 @@ void RoomManager::Render(SDL_Surface* surface, Matrix4 projection)
 void RoomManager::ResetValues()
 {
 	currentRoomCount = 0;
+
+	for (int i = 0; i < 4; i++)
+	{
+		directionArray[i] = false;
+	}
 
 	for (int i = 0; i < roomCount; i++)
 	{

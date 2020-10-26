@@ -25,6 +25,7 @@ private:
 public:
 
 	void GenerateRooms();
+	void GenerateNumbers();
 	void CreateRoom(int sideNumber, int roomNumber);
 	void OnDestroy();
 	void Render(SDL_Surface* surface, Matrix4 projection);
