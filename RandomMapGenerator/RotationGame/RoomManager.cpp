@@ -14,6 +14,7 @@ void RoomManager::GenerateRooms()
 			numberOfStartingBranches = Utility::RandomNumberGenerator(1, 4);
 			std::cout << "Starting Branches: " << numberOfStartingBranches << std::endl;
 
+
 			for (int i = 0; i < numberOfStartingBranches; i++)
 			{
 				// checks if the generator has already generated rooms in that direction
@@ -27,12 +28,21 @@ void RoomManager::GenerateRooms()
 				{
 					directionArray[direction] = true;
 					CreateRoom(direction + 1, 0);
+					splitRoomCount++;
 				}
 			}
 		}
 		else
 		{
-			CreateRoom(Utility::RandomNumberGenerator(1, 4), currentRoomCount - 1);
+			//K: the room creator currently uses the amount of split paths to keep an order of generation between each path, as they will all be generated in a sequence 
+			//(i.e. path 1 consists of rooms 2, 4, 6, 8 etc., path 2 consists of rooms 3, 5, 7, 9 etc. on a split of 2 different paths)
+			CreateRoom(Utility::RandomNumberGenerator(1, 4), currentRoomCount - splitRoomCount);
+		}
+		//K: this keeps track of how many attempts the generator has made and force resets it if it fails to finish generating within an amount of attempts. (10x the amount of rooms that should be generated)
+		generationAttempts++;
+		if (generationAttempts > roomCount * 10) {
+			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts." << std::endl << std::endl;;
+			ResetValues();
 		}
 	}
 }
@@ -60,6 +70,15 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 			roomArray[currentRoomCount] = tempTile;
 			std::cout << "Up" << std::endl;
 			currentRoomCount++;
+			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
+			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
+			if (splitRoomChanceRoll == 1)
+			{
+				std::cout << "Split Room Created" << std::endl;
+				int numberOfBranches = Utility::RandomNumberGenerator(1, 2);
+				CreateBranches(numberOfBranches, currentRoomCount, sideNumber);
+				numberOfBranches = NULL;
+			}
 		}
 
 		break;
@@ -80,6 +99,16 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 			roomArray[currentRoomCount] = tempTile;
 			std::cout << "Right" << std::endl;
 			currentRoomCount++;
+			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
+			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
+			if (splitRoomChanceRoll == 1)
+			{
+				std::cout << "Split Room Created" << std::endl;
+				int numberOfBranches = Utility::RandomNumberGenerator(1, 2);
+				CreateBranches(numberOfBranches, currentRoomCount, sideNumber);
+				numberOfBranches = NULL;
+			}
+
 		}
 		break;
 
@@ -99,6 +128,15 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 			roomArray[currentRoomCount] = tempTile;
 			std::cout << "Down" << std::endl;
 			currentRoomCount++;
+			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
+			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
+			if (splitRoomChanceRoll == 1)
+			{
+				std::cout << "Split Room Created" << std::endl;
+				int numberOfBranches = Utility::RandomNumberGenerator(1, 2);
+				CreateBranches(numberOfBranches, currentRoomCount, sideNumber);
+				numberOfBranches = NULL;
+			}
 		}
 		break;
 
@@ -120,8 +158,64 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 			roomArray[currentRoomCount] = tempTile;
 			std::cout << "Left" << std::endl;
 			currentRoomCount++;
+			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
+			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
+			if (splitRoomChanceRoll == 1)
+			{
+				std::cout << "Split Room Created" << std::endl;
+				int numberOfBranches = Utility::RandomNumberGenerator(1, 2);
+				CreateBranches(numberOfBranches, currentRoomCount, sideNumber);
+				numberOfBranches = NULL;
+			}
 		}
 		break;
+	}
+}
+
+void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOrigin)
+{
+	bool branchDirectionArray[4] = { false, false, false, false };
+	//K: switch statement to check which side the creator of the splitting tile is from, to avoid attempting to generate on top of the already existing path it came from.
+	switch (sideOrigin)
+	{
+	case 1:
+		branchDirectionArray[2] = true;
+		break;
+	case 2:
+		branchDirectionArray[3] = true;
+		break;
+	case 3:
+		branchDirectionArray[0] = true;
+		break;
+	case 4:
+		branchDirectionArray[1] = true;
+		break;
+	}
+	for (int i = 0; i < branches; i++)
+	{
+		// checks if the generator has already generated rooms in that direction
+		int direction = Utility::RandomNumberGenerator(0, 3);
+
+		if (branchDirectionArray[direction] == true)
+		{
+			i--;
+		}
+		else
+		{
+			branchDirectionArray[direction] = true;
+			CreateRoom(direction + 1, branchRoomNumber - 1);
+			splitRoomCount++;
+		}
+		generationAttempts++;
+		if (generationAttempts > roomCount * 10) {
+			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts." << std::endl << std::endl;;
+			ResetValues();
+			break;
+		}
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		branchDirectionArray[i] = NULL;
 	}
 }
 
@@ -151,6 +245,8 @@ void RoomManager::Render(SDL_Surface* surface, Matrix4 projection)
 void RoomManager::ResetValues()
 {
 	currentRoomCount = 0;
+	splitRoomCount = 0;
+	generationAttempts = 0;
 
 	for (int i = 0; i < 4; i++)
 	{

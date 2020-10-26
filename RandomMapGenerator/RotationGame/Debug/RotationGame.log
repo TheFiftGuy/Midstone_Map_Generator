@@ -1,11 +1,14 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  GameManager.cpp
   RoomManager.cpp
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(159,18): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(159,18): warning C4154: deletion of an array expression; conversion to pointer supplied
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(169,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(170,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(189,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(190,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(191,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-F:\Visual Studio Projects\Midstone\RandomMapGenerator\RotationGame\RoomManager.cpp(192,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  RotationGame.vcxproj -> F:\Visual Studio Projects\Midstone\RandomMapGenerator\Debug\MapGenerator.exe
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(228,18): warning C4156:  deletion of an array expression without using the array form of 'delete'; array form substituted
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(228,18): warning C4154:  deletion of an array expression; conversion to pointer supplied
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(238,43): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(239,43): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(260,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(261,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(262,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+  Scene0.cpp
+  Generating Code...
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(263,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+  RotationGame.vcxproj -> D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\Debug\MapGenerator.exe
