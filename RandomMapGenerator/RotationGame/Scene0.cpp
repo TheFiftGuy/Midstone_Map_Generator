@@ -54,6 +54,22 @@ void Scene0::HandleEvents(const SDL_Event & event)
 		case SDL_SCANCODE_E:
 			Reset();
 			break;
+		case SDL_SCANCODE_W:
+			Scene0RoomManager->MoveRooms(1);
+			ClearScreen();
+			break;
+		case SDL_SCANCODE_D:
+			Scene0RoomManager->MoveRooms(2);
+			ClearScreen();
+			break;
+		case SDL_SCANCODE_S:
+			Scene0RoomManager->MoveRooms(3);
+			ClearScreen();
+			break;
+		case SDL_SCANCODE_A:
+			Scene0RoomManager->MoveRooms(4);
+			ClearScreen();
+			break;
 		}
 	}
 }
@@ -69,7 +85,11 @@ void Scene0::Reset()
 	std::cout << "Reset Count: " << resetCount << std::endl << std::endl;;
 	Scene0RoomManager->ResetValues();
 	Scene0RoomManager->GenerateRooms();
+	ClearScreen();
+}
 
+void Scene0::ClearScreen()
+{
 	SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
 	SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0, 0, 0));
 }

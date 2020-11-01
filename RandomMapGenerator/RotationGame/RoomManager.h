@@ -22,17 +22,17 @@ private:
 	bool directionArray[4] = {false, false, false, false};
 	bool splitRoomExists = true;
 
-	int roomCount = 30;  //change these numbers for # of rooms, includes starting room
-	Tile* roomArray[30];
-	Vec3 screenCoordsArray[30];
-	SDL_Rect rectArray[30];
+	int roomCount = 100;  //change these numbers for # of rooms, includes starting room
+	Tile* roomArray[100];
+	Vec3 screenCoordsArray[100];
+	SDL_Rect rectArray[100];
 
 public:
 
 	void GenerateRooms();
-	void GenerateNumbers();
 	void CreateBranches(int branches, int branchRoomNumber, int sideOrigin);
 	void CreateRoom(int sideNumber, int roomNumber);
+	void MoveRooms(int direction);
 	void OnDestroy();
 	void Render(SDL_Surface* surface, Matrix4 projection);
 	void ResetValues();

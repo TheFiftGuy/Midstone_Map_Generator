@@ -34,6 +34,7 @@ public:
 	void HandleEvents(const SDL_Event &event);
 
 	void Reset();
+	void ClearScreen();
 };
 
 #endif
