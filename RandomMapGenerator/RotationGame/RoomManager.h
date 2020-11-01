@@ -18,14 +18,17 @@ private:
 	int splitRoomCount;
 	int generationAttempts = 0;
 	int splitRoomChanceRoll;
-	int splitRoomMaxChance = 5; //K: adjust this value to change how frequently splitter rooms appear in generation, the higher the value, the less likely.
+	int splitRoomMaxChance = 10; //K: adjust this value to change how frequently splitter rooms appear in generation, the higher the value, the less likely.
 	bool directionArray[4] = {false, false, false, false};
 	bool splitRoomExists = true;
+	bool sucessfullyGen;
+	bool resetInProgress;
+	Tile* tempTile;
 
-	int roomCount = 100;  //change these numbers for # of rooms, includes starting room
-	Tile* roomArray[100];
-	Vec3 screenCoordsArray[100];
-	SDL_Rect rectArray[100];
+	int roomCount = 50;  //change these numbers for # of rooms, includes starting room
+	Tile* roomArray[50];
+	Vec3 screenCoordsArray[50];
+	SDL_Rect rectArray[50];
 
 public:
 
