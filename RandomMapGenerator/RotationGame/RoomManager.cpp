@@ -48,7 +48,7 @@ void RoomManager::GenerateRooms()
 		generationAttempts++;
 		if (generationAttempts > roomCount * 10)
 		{
-			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts." << std::endl << std::endl;;
+			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts. (Generate Rooms)" << std::endl << std::endl;;
 			resetInProgress = true;
 			ResetValues();
 		}
@@ -75,7 +75,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		if (openSpace == true)
 		{
 			roomArray[currentRoomCount] = tempTile;
-			std::cout << "Up" << std::endl;
+			//std::cout << "Up" << std::endl; //D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
@@ -108,7 +108,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		if (openSpace == true)
 		{
 			roomArray[currentRoomCount] = tempTile;
-			std::cout << "Right" << std::endl;
+			//std::cout << "Right" << std::endl;	//D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
@@ -141,7 +141,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		if (openSpace == true)
 		{
 			roomArray[currentRoomCount] = tempTile;
-			std::cout << "Down" << std::endl;
+			//std::cout << "Down" << std::endl;	//D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
@@ -176,7 +176,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		if (openSpace == true)
 		{
 			roomArray[currentRoomCount] = tempTile;
-			std::cout << "Left" << std::endl;
+			//std::cout << "Left" << std::endl;		//D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
@@ -248,7 +248,7 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 		}
 		generationAttempts++;
 		if (generationAttempts > roomCount * 10) {
-			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts." << std::endl << std::endl;;
+			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts. (create branches)" << std::endl << std::endl;;
 			resetInProgress = true;
 			ResetValues();
 			break;
