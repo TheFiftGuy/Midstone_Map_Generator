@@ -18,12 +18,13 @@ private:
 	int splitRoomCount;
 	int generationAttempts = 0;
 	int splitRoomChanceRoll;
-	int splitRoomMaxChance = 10; //K: adjust this value to change how frequently splitter rooms appear in generation, the higher the value, the less likely.
+	int splitRoomMaxChance = 25; //K: adjust this value to change how frequently splitter rooms appear in generation, the higher the value, the less likely.
 	bool directionArray[4] = {false, false, false, false};
 	bool splitRoomExists = true;
 	bool sucessfullyGen;
 	bool resetInProgress;
-	Tile* tempTile;
+	bool initialRoomGen;
+	Tile* tempTile = new Tile;
 
 	int roomCount = 50;  //change these numbers for # of rooms, includes starting room
 	Tile* roomArray[50];

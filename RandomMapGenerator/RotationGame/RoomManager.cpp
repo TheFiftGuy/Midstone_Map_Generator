@@ -192,7 +192,10 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		if (openSpace == false)
 		{
 			sucessfullyGen = false;
+			tempTile = nullptr;
+			delete tempTile;
 		}
+
 		break;
 	}
 }
@@ -291,6 +294,7 @@ void RoomManager::OnDestroy()
 		delete roomArray[i];
 	}
 	delete roomArray;
+	tempTile = nullptr;
 	delete tempTile;
 }
 
@@ -313,6 +317,7 @@ void RoomManager::ResetValues()
 	currentRoomCount = 0;
 	splitRoomCount = 0;
 	generationAttempts = 0;
+	tempTile = nullptr;
 	delete tempTile;
 
 	for (int i = 0; i < 4; i++)

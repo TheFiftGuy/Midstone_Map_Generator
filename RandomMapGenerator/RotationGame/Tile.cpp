@@ -49,6 +49,7 @@ bool Tile::OnCreate()
 
 void Tile::OnDestroy()
 {
+
 }
 
 void Tile::Update(const float deltaTime)
