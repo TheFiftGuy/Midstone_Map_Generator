@@ -17,6 +17,7 @@ private:
 	int numberOfStartingBranches;
 	int splitRoomCount;
 	int generationAttempts = 0;
+	int NewRoomCount = 0;
 	int splitRoomChanceRoll;
 	int splitRoomMaxChance = 25; //K: adjust this value to change how frequently splitter rooms appear in generation, the higher the value, the less likely.
 	bool directionArray[4] = {false, false, false, false};
@@ -28,6 +29,7 @@ private:
 
 	int roomCount = 50;  //change these numbers for # of rooms, includes starting room
 	Tile* roomArray[50];
+	Tile* TempTileArray[501];
 	Vec3 screenCoordsArray[50];
 	SDL_Rect rectArray[50];
 

@@ -49,7 +49,8 @@ bool Tile::OnCreate()
 
 void Tile::OnDestroy()
 {
-
+	image = nullptr;
+	delete image;
 }
 
 void Tile::Update(const float deltaTime)

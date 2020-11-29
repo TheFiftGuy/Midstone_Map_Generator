@@ -63,6 +63,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 	{
 	case 1:
 		tempTile = new Tile(Vec3(roomArray[roomNumber]->GetPosition().x, roomArray[roomNumber]->GetPosition().y + 50.0f, roomArray[roomNumber]->GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
+		TempTileArray[NewRoomCount + 1] = tempTile;
 
 		for (int i = 0; i < currentRoomCount; i++)
 		{
@@ -96,7 +97,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 	case 2:
 		tempTile = new Tile(Vec3(roomArray[roomNumber]->GetPosition().x + 50.0f, roomArray[roomNumber]->GetPosition().y, roomArray[roomNumber]->GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
-
+		TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
 		{
 			if (roomArray[i]->GetPosition().x == tempTile->GetPosition().x && roomArray[i]->GetPosition().y == tempTile->GetPosition().y)
@@ -129,7 +130,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 	case 3:
 		tempTile = new Tile(Vec3(roomArray[roomNumber]->GetPosition().x, roomArray[roomNumber]->GetPosition().y - 50.0f, roomArray[roomNumber]->GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
-
+		TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
 		{
 			if (roomArray[i]->GetPosition().x == tempTile->GetPosition().x && roomArray[i]->GetPosition().y == tempTile->GetPosition().y)
@@ -162,7 +163,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 	case 4:
 		tempTile = new Tile(Vec3(roomArray[roomNumber]->GetPosition().x - 50.0f, roomArray[roomNumber]->GetPosition().y, roomArray[roomNumber]->GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
-
+		TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
 		{
 			//std::cout << tempTile->GetPosition().x << ", " << tempTile->GetPosition().y << ", " << tempTile->GetPosition().z << " " << roomArray[i]->GetPosition().x << ", " << roomArray[i]->GetPosition().y << ", " << roomArray[i]->GetPosition().z << std::endl;
@@ -222,6 +223,7 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 
 	for (int i = 0; i < branches; i++)
 	{
+		generationAttempts++;
 		//K: this is here to stop it from continuing to do stuff from this loop if a reset happens
 		if (resetInProgress == false)
 		{
@@ -249,7 +251,6 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 				}
 			}
 		}
-		generationAttempts++;
 		if (generationAttempts > roomCount * 10) {
 			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts. (create branches)" << std::endl << std::endl;;
 			resetInProgress = true;
@@ -291,7 +292,16 @@ void RoomManager::OnDestroy()
 {
 	for (int i = 0; i < roomCount; i++)
 	{
+		roomArray[i]->OnDestroy();
 		delete roomArray[i];
+	}
+	for (int j = 0; j < roomCount * 10; j++) {
+		if (TempTileArray[j] != nullptr)
+		{
+			TempTileArray[j]->OnDestroy();
+		}
+		delete TempTileArray[j];
+		TempTileArray[j] = nullptr;
 	}
 	delete roomArray;
 	tempTile = nullptr;
@@ -334,5 +344,13 @@ void RoomManager::ResetValues()
 		rectArray[i].w = 0.0f;
 		rectArray[i].x = 0.0f;
 		rectArray[i].y = 0.0f;
+	}
+	for (int j = 0; j < roomCount * 10; j++) {
+		if (TempTileArray[j] != nullptr)
+		{
+			TempTileArray[j]->OnDestroy();
+		}
+		delete TempTileArray[j];
+		TempTileArray[j] = nullptr;
 	}
 }
