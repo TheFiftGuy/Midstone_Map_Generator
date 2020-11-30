@@ -49,8 +49,8 @@ bool Tile::OnCreate()
 
 void Tile::OnDestroy()
 {
-	image = nullptr;
 	delete image;
+	image = nullptr;
 }
 
 void Tile::Update(const float deltaTime)
@@ -67,4 +67,9 @@ void Tile::Render() const
 void Tile::HandleEvents(const SDL_Event& event)
 {
 	
+}
+
+void Tile::SetImage(SDL_Surface* ImageName)
+{
+	image = ImageName;
 }

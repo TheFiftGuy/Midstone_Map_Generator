@@ -23,6 +23,7 @@ public:
 	void Update(const float deltaTime);
 	void Render()const;
 	void HandleEvents(const SDL_Event& event);
+	void SetImage(SDL_Surface* ImageName);
 
 	SDL_Surface* image;
 };

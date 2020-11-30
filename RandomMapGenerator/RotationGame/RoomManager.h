@@ -25,11 +25,10 @@ private:
 	bool sucessfullyGen;
 	bool resetInProgress;
 	bool initialRoomGen;
-	Tile* tempTile = new Tile;
+	Tile tempTile;
 
 	int roomCount = 50;  //change these numbers for # of rooms, includes starting room
-	Tile* roomArray[50];
-	Tile* TempTileArray[501];
+	Tile roomArray[50];
 	Vec3 screenCoordsArray[50];
 	SDL_Rect rectArray[50];
 
