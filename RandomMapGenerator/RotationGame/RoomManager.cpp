@@ -7,7 +7,7 @@ void RoomManager::GenerateRooms()
 	{
 		if (currentRoomCount == 0)
 		{
-			roomArray[0] = Tile(Vec3(400.0f, 400.0f, 0.0f), Vec3(0.0f, 0.0f, 0.0f), 50, 50, IMG_Load("StartRoom.png"));
+			roomArray[0] = Tile(Vec3(400.0f, 400.0f, 0.0f), Vec3(0.0f, 0.0f, 0.0f), 50, 50, startRoom);
 			currentRoomCount++;
 			resetInProgress = false;
 
@@ -62,7 +62,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 	switch (sideNumber)
 	{
 	case 1:
-		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y + 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
+		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y + 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 
 		for (int i = 0; i < currentRoomCount; i++)
@@ -96,7 +96,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		break;
 
 	case 2:
-		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x + 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
+		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x + 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
 		{
@@ -129,7 +129,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		break;
 
 	case 3:
-		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y - 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
+		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y - 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
 		{
@@ -162,7 +162,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		break;
 
 	case 4:
-		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x - 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50);
+		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x - 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
 		{
@@ -292,6 +292,8 @@ void RoomManager::OnDestroy()
 	{
 		roomArray[i].OnDestroy();
 	}
+	free(tileImage);
+	delete tileImage;
 }
 
 void RoomManager::Render(SDL_Surface* surface, Matrix4 projection)
@@ -314,11 +316,13 @@ void RoomManager::ResetValues()
 	splitRoomCount = 0;
 	generationAttempts = 0;
 
+	//free(tileImage);
+
 	for (int i = 0; i < 4; i++)
 	{
 		directionArray[i] = false;
 	}
-	roomArray[0].SetImage(IMG_Load("WhiteBox.png"));
+	roomArray[0].SetImage(tileImage);
 	for (int i = 0; i < roomCount; i++)
 	{
 		roomArray[i].SetPosition(400.0f, 400.0f, 0.0f);

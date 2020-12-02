@@ -31,6 +31,8 @@ private:
 	Tile roomArray[50];
 	Vec3 screenCoordsArray[50];
 	SDL_Rect rectArray[50];
+	SDL_Surface* tileImage = IMG_Load("WhiteBox.png");
+	SDL_Surface* startRoom = IMG_Load("StartRoom.png");
 
 public:
 
