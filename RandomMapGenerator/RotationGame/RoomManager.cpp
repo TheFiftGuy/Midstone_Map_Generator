@@ -1,10 +1,49 @@
 #include "RoomManager.h"
 #include "Utility.h"
 
+
+
+void RoomManager::roomInput(){ //D This is where user input for the rooms is done - entire section done by D
+	
+	std::cout << "How many rooms do you want?" << endl;
+	std::cout << "Input:";
+	std::cin >> roomCount;
+	//testing
+	while (!cin) { //triggers if user writes anything that is not a number - Note if user writes " 15blahblah65" code will run with "15"
+
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		std::cout << "ERROR: Please try again, numbers only" << endl;
+
+		std::cout << "How many rooms do you want?" << endl;
+		std::cout << "Input:";
+		std::cin >> roomCount;
+	}
+
+	while (roomCount > 180) /*anything more than 180 takes too long*/ {
+		std::cout << "ERROR: Please try again. The number of rooms must be < 180" << endl;
+		std::cout << "How many rooms do you want?" << endl;
+		std::cout << "Input:";
+		std::cin >> roomCount;
+	}
+
+	std::cout << "I want " << roomCount << " rooms." << endl;
+
+	//this makes all the arrays 
+	roomArray = new Tile[roomCount];
+	screenCoordsArray = new Vec3[roomCount];
+	rectArray = new SDL_Rect[roomCount];
+}
+
+
 void RoomManager::GenerateRooms()
 {
+	RoomManager::roomInput(); //D how many rooms (see above)
+
 	while (currentRoomCount < roomCount)
 	{
+	
 		if (currentRoomCount == 0)
 		{
 			roomArray[0] = Tile(Vec3(400.0f, 400.0f, 0.0f), Vec3(0.0f, 0.0f, 0.0f), 50, 50, startRoom);

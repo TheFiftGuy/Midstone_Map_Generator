@@ -27,15 +27,16 @@ private:
 	bool initialRoomGen;
 	Tile tempTile;
 
-	int roomCount = 50;  //change these numbers for # of rooms, includes starting room
-	Tile roomArray[50];
-	Vec3 screenCoordsArray[50];
-	SDL_Rect rectArray[50];
+	int roomCount;
+	Tile* roomArray;
+	Vec3* screenCoordsArray;
+	SDL_Rect* rectArray;
+
 	SDL_Surface* tileImage = IMG_Load("WhiteBox.png");
 	SDL_Surface* startRoom = IMG_Load("StartRoom.png");
 
 public:
-
+	void roomInput();
 	void GenerateRooms();
 	void CreateBranches(int branches, int branchRoomNumber, int sideOrigin);
 	void CreateRoom(int sideNumber, int roomNumber);
