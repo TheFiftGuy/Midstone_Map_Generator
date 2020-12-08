@@ -2,7 +2,7 @@
 
 Tile::Tile()
 {
-	image = IMG_Load("test.png");
+	
 }
 
 Tile::~Tile()

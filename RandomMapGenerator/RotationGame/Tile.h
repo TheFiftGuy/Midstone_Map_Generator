@@ -11,6 +11,12 @@ using namespace MATH;
 
 class Tile : public GameObject, public Physics
 {
+
+	//D scott tesint stuff here
+	////CHANGES HERE
+	//Tile(const Tile&) = delete;
+	//Tile& operator = (const Tile&) = delete;
+
 public:
 	int height;
 	int width;

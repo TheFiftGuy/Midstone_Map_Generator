@@ -28,12 +28,27 @@ void RoomManager::roomInput(){ //D This is where user input for the rooms is don
 		std::cin >> roomCount;
 	}
 
-	std::cout << "I want " << roomCount << " rooms." << endl;
+	std::cout << "I want " << roomCount << " rooms." << endl; //just writes a message with the # of rooms input-ed
 
-	//this makes all the arrays 
-	roomArray = new Tile[roomCount];
-	screenCoordsArray = new Vec3[roomCount];
-	rectArray = new SDL_Rect[roomCount];
+	//this makes all the arrays/vectors as large as we inputed
+	roomArray.resize(roomCount);
+	screenCoordsArray.resize(roomCount);
+	rectArray.resize(roomCount);
+
+	for (int i = 0; i < roomCount; i++) {
+		roomArray.push_back(Tile());
+	}
+	for (int i = 0; i < roomCount; i++) {
+		screenCoordsArray.push_back(Vec3());
+	}
+	for (int i = 0; i < roomCount; i++) {
+		rectArray.push_back(SDL_Rect());
+	}
+
+	//roomArray = new Tile[roomCount]();
+	//screenCoordsArray = new Vec3[roomCount];
+	//rectArray = new SDL_Rect[roomCount];
+
 }
 
 
@@ -333,6 +348,7 @@ void RoomManager::OnDestroy()
 	}
 	free(tileImage);
 	delete tileImage;
+	
 }
 
 void RoomManager::Render(SDL_Surface* surface, Matrix4 projection)

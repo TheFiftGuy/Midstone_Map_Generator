@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include "Tile.h"
 #include <iostream>
+#include <vector>
 #include <random>
 #include "MMath.h"
 
@@ -28,9 +29,10 @@ private:
 	Tile tempTile;
 
 	int roomCount;
-	Tile* roomArray;
-	Vec3* screenCoordsArray;
-	SDL_Rect* rectArray;
+	std::vector<Tile> roomArray; //D maybe Tile* goes here
+	std::vector<Vec3> screenCoordsArray;
+	std::vector<SDL_Rect> rectArray;
+	
 
 	SDL_Surface* tileImage = IMG_Load("WhiteBox.png");
 	SDL_Surface* startRoom = IMG_Load("StartRoom.png");
