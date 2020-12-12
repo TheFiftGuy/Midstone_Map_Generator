@@ -308,13 +308,16 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 			}
 			else
 			{
+				//K: checks if adding a branch room would exceed the max number of rooms allowed, if this is not the case, it will attempt to generate the room.
 				if (branchRoomNumber - 1 >= 0 && currentRoomCount != roomCount && currentRoomCount != 0) {
 					CreateRoom(direction + 1, branchRoomNumber - 1);
+					//K: if the room succesfully generates, its direction is added to the split rooms array to inform that the side is now occupied by a room
 					if (sucessfullyGen == true && resetInProgress == false)
 					{
 						branchDirectionArray[direction] = true;
 						splitRoomCount++;
 					}
+					//K: if the room fails to generate, then it likely means that another room from somewhere else is blocking the path, meaning that the space should be marked as occupied.
 					if (sucessfullyGen == false && resetInProgress == false)
 					{
 						branchDirectionArray[direction] = true;
@@ -323,6 +326,7 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 				}
 			}
 		}
+		//K: this keeps track of how many attempts the generator has made and force resets it if it fails to finish generating within an amount of attempts. (10x the amount of rooms that should be generated)
 		if (generationAttempts > roomCount * 10) {
 			std::cout << "Error: Map encountered a problem and was unable to generate in " << generationAttempts << " attempts. (create branches)" << std::endl << std::endl;;
 			resetInProgress = true;
@@ -331,6 +335,7 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 		}
 	}
 
+	//K: clears the direction array for future branch rooms after finishing
 	for (int i = 0; i < 4; i++)
 	{
 		branchDirectionArray[i] = NULL;

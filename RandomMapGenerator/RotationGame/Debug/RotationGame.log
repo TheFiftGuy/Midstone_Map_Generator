@@ -1,9 +1,25 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (RotationGame.vcxproj, SDL_Project.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  GameManager.cpp
+  Main.cpp
+  Room.cpp
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Room.h(9,21): warning C4584:  'Room': base-class 'GameObject' is already a base-class of 'Tile'
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\GameObject.h(7): message :  see declaration of 'GameObject'
   RoomManager.cpp
-C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\RoomManager.cpp(472,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\RoomManager.cpp(473,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\RoomManager.cpp(496,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\RoomManager.cpp(497,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\RoomManager.cpp(498,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\RotationGame\RoomManager.cpp(499,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  RotationGame.vcxproj -> C:\Users\decla\Documents\GitHub\Midstone_Map_Generator\RandomMapGenerator\Debug\MapGenerator.exe
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\Tile.h(12): message :  see declaration of 'Tile'
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(472,43): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(473,43): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(496,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(497,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(498,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+  Tile.cpp
+  MMath.cpp
+  Physics.cpp
+  Player.cpp
+  Scene0.cpp
+  Timer.cpp
+  Utility.cpp
+  VMath.cpp
+  Window.cpp
+  Generating Code...
+D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\RotationGame\RoomManager.cpp(499,20): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+  RotationGame.vcxproj -> D:\Documents\C++ Projects\MidstoneMapGenerator\RandomMapGenerator\Debug\MapGenerator.exe
