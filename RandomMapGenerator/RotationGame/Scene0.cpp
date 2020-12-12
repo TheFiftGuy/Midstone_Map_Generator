@@ -48,6 +48,7 @@ void Scene0::Render()
 
 void Scene0::HandleEvents(const SDL_Event & event)
 {
+	// Inputs for WASD for panning and E for reset
 	if (event.type == SDL_KEYDOWN)
 	{
 		switch (event.key.keysym.scancode)

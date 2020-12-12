@@ -2,10 +2,7 @@
 
 Tile::Tile()
 {
-	//Up = false;
-	//Right = false;
-	//Down = false;
-	//Left = false;
+
 }
 
 Tile::~Tile()

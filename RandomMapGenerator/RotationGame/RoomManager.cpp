@@ -53,9 +53,10 @@ void RoomManager::GenerateRooms()
 {
 	RoomManager::roomInput(); //D how many rooms (see above)
 
+	// Runs until the room count is met
 	while (currentRoomCount < roomCount)
 	{
-	
+		// Create start room
 		if (currentRoomCount == 0)
 		{
 			roomArray[0] = Tile(Vec3(400.0f, 400.0f, 0.0f), Vec3(0.0f, 0.0f, 0.0f), 50, 50, startRoom);
@@ -112,10 +113,9 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 	switch (sideNumber)
 	{
-	case 1:  //UP
+	case 1:  //Up
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y + 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		
-
 		for (int i = 0; i < currentRoomCount; i++)
 		{
 			if (roomArray[i].GetPosition().x == tempTile.GetPosition().x && roomArray[i].GetPosition().y == tempTile.GetPosition().y) //D this checks every room generated so far, to see if its located where tempTile wants to go
@@ -126,16 +126,13 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			// Set directions to decide which image to use
 			tempTile.Down = true;
 			roomArray[roomNumber].Up = true;
 
 			roomArray[currentRoomCount] = tempTile;
-			//std::cout << "Up" << std::endl; //D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
-
-			
-			//D Room itself is done generating here
 
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
 			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
@@ -144,14 +141,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 				std::cout << "Split Room Created" << std::endl << std::endl;
 				int numberOfBranches = Utility::RandomNumberGenerator(1, 2);
 				CreateBranches(numberOfBranches, currentRoomCount, sideNumber);
-
-				//D room is done generating children branches
-
-
-
 				numberOfBranches = NULL;
-
-
 			}
 		}
 		if (openSpace == false)
@@ -160,7 +150,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		}
 		break;
 
-	case 2://Right
+	case 2: //Right
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x + 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
@@ -173,11 +163,11 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			// Set directions to decide which image to use
 			tempTile.Left = true;
 			roomArray[roomNumber].Right = true;
 
 			roomArray[currentRoomCount] = tempTile;
-			//std::cout << "Right" << std::endl;	//D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
@@ -209,13 +199,14 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			// Set directions to decide which image to use
 			tempTile.Up = true;
 			roomArray[roomNumber].Down = true;
 
 			roomArray[currentRoomCount] = tempTile;
-			//std::cout << "Down" << std::endl;	//D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
+
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
 			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
 			if (splitRoomChanceRoll == 1)
@@ -232,7 +223,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		}
 		break;
 
-	case 4://Left
+	case 4: //Left
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x - 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
@@ -247,13 +238,14 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			// Set directions to decide which image to use
 			tempTile.Right = true;
 			roomArray[roomNumber].Left = true;
 
 			roomArray[currentRoomCount] = tempTile;
-			//std::cout << "Left" << std::endl;		//D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
+
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
 			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
 			if (splitRoomChanceRoll == 1)
@@ -483,11 +475,10 @@ void RoomManager::Render(SDL_Surface* surface, Matrix4 projection)
 
 void RoomManager::ResetValues()
 {
+	// sets all values to their original values
 	currentRoomCount = 0;
 	splitRoomCount = 0;
 	generationAttempts = 0;
-
-	//free(tileImage);
 
 	for (int i = 0; i < 4; i++)
 	{
