@@ -2,7 +2,10 @@
 
 Tile::Tile()
 {
-	
+	//Up = false;
+	//Right = false;
+	//Down = false;
+	//Left = false;
 }
 
 Tile::~Tile()
@@ -23,7 +26,8 @@ Tile::Tile(Vec3 pos_, Vec3 vel_, int height_, int width_)
 	height = height_;
 	width = width_;
 
-	image = IMG_Load("WhiteBox.png");
+	//D removed for now, now adding new image feature - I dont think this was being used?
+	//image = IMG_Load("WhiteBox.png");
 }
 
 Tile::Tile(Vec3 pos_, Vec3 vel_, int height_, int width_, SDL_Surface* image_)

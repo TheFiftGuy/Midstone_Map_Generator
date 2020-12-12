@@ -20,6 +20,13 @@ class Tile : public GameObject, public Physics
 public:
 	int height;
 	int width;
+
+
+	bool Up = false;
+	bool Right = false;
+	bool Down = false;
+	bool Left = false;
+
 	Tile();
 	~Tile();
 	Tile(Vec3 pos_, Vec3 vel_, int height_, int width_);

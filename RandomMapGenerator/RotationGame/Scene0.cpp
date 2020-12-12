@@ -22,6 +22,7 @@ bool Scene0::OnCreate()
 	projection =  ndc * ortho;													//D ...project we will consider 50 pixels as 1 imgaginary "unit" in a cartesian plane
 	Scene0RoomManager = new RoomManager();
 	Scene0RoomManager->GenerateRooms();
+	Scene0RoomManager->SetRoomImages();
 
 	return true;
 }
@@ -85,6 +86,7 @@ void Scene0::Reset()
 	std::cout << "Reset Count: " << resetCount << std::endl << std::endl;;
 	Scene0RoomManager->ResetValues();
 	Scene0RoomManager->GenerateRooms();
+	Scene0RoomManager->SetRoomImages();
 	ClearScreen();
 }
 

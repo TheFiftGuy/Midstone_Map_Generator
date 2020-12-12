@@ -112,9 +112,9 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 	switch (sideNumber)
 	{
-	case 1:
+	case 1:  //UP
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y + 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
-		//TempTileArray[NewRoomCount + 1] = tempTile;
+		
 
 		for (int i = 0; i < currentRoomCount; i++)
 		{
@@ -126,10 +126,17 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			tempTile.Down = true;
+			roomArray[roomNumber].Up = true;
+
 			roomArray[currentRoomCount] = tempTile;
 			//std::cout << "Up" << std::endl; //D Comenting this out since its not needed rn
 			currentRoomCount++;
 			sucessfullyGen = true;
+
+			
+			//D Room itself is done generating here
+
 			//K: Rolls a chance based on the MaxChance variable for deciding if the newly created room should be a split room or not
 			splitRoomChanceRoll = Utility::RandomNumberGenerator(1, splitRoomMaxChance);
 			if (splitRoomChanceRoll == 1)
@@ -137,7 +144,14 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 				std::cout << "Split Room Created" << std::endl << std::endl;
 				int numberOfBranches = Utility::RandomNumberGenerator(1, 2);
 				CreateBranches(numberOfBranches, currentRoomCount, sideNumber);
+
+				//D room is done generating children branches
+
+
+
 				numberOfBranches = NULL;
+
+
 			}
 		}
 		if (openSpace == false)
@@ -146,7 +160,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		}
 		break;
 
-	case 2:
+	case 2://Right
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x + 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
@@ -159,6 +173,9 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			tempTile.Left = true;
+			roomArray[roomNumber].Right = true;
+
 			roomArray[currentRoomCount] = tempTile;
 			//std::cout << "Right" << std::endl;	//D Comenting this out since its not needed rn
 			currentRoomCount++;
@@ -179,7 +196,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		}
 		break;
 
-	case 3:
+	case 3: //Down
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x, roomArray[roomNumber].GetPosition().y - 50.0f, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
@@ -192,6 +209,9 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			tempTile.Up = true;
+			roomArray[roomNumber].Down = true;
+
 			roomArray[currentRoomCount] = tempTile;
 			//std::cout << "Down" << std::endl;	//D Comenting this out since its not needed rn
 			currentRoomCount++;
@@ -212,7 +232,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 		}
 		break;
 
-	case 4:
+	case 4://Left
 		tempTile = Tile(Vec3(roomArray[roomNumber].GetPosition().x - 50.0f, roomArray[roomNumber].GetPosition().y, roomArray[roomNumber].GetPosition().z), Vec3(0.0f, 0.0f, 0.0f), 50, 50, tileImage);
 		//TempTileArray[NewRoomCount + 1] = tempTile;
 		for (int i = 0; i < currentRoomCount; i++)
@@ -227,6 +247,9 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		if (openSpace == true)
 		{
+			tempTile.Right = true;
+			roomArray[roomNumber].Left = true;
+
 			roomArray[currentRoomCount] = tempTile;
 			//std::cout << "Left" << std::endl;		//D Comenting this out since its not needed rn
 			currentRoomCount++;
@@ -312,6 +335,97 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 	{
 		branchDirectionArray[i] = NULL;
 	}
+}
+
+void RoomManager::SetRoomImages(){ //D This decides what Image each room will have, depending on where the entrances/exits of the rooms are.
+
+	//Loop for each room, to find what criteria the rooms fit, then assigns one accordingly 
+	
+	for (int i = 0; i < roomCount; i++) {
+
+		
+		if (i == 0) {
+			//starting room will Stay as the Red image
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == false && roomArray[i].Down == false && roomArray[i].Left == false) { //D Bottom End room
+
+			roomArray[i].SetImage(roomBottom);
+			continue;
+		}
+		if (roomArray[i].Up == false && roomArray[i].Right == true && roomArray[i].Down == false && roomArray[i].Left == true) { //D Horizontal Corridor
+
+			roomArray[i].SetImage(roomCorridorH);
+			continue;
+		}
+		if (roomArray[i].Up == false && roomArray[i].Right == true && roomArray[i].Down == false && roomArray[i].Left == false) { //D Left End room
+
+			roomArray[i].SetImage(roomLeft);
+			continue;
+		}
+		if (roomArray[i].Up == false && roomArray[i].Right == false && roomArray[i].Down == false && roomArray[i].Left == true) { //D Right End room
+
+			roomArray[i].SetImage(roomRight);
+			continue;
+		}
+		if (roomArray[i].Up == false && roomArray[i].Right == false && roomArray[i].Down == true && roomArray[i].Left == false) { //D  Top End Room
+
+			roomArray[i].SetImage(roomTop);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == false && roomArray[i].Down == true && roomArray[i].Left == false) { //D  Vertical Corridor Room
+
+			roomArray[i].SetImage(roomCorridorV);
+			continue;
+		}
+		//D for the next 9 rooms, the names come from imaging a 3*3 grid like a numpad, where 1 is at the top left, and 9 is bottom right
+		if (roomArray[i].Up == false && roomArray[i].Right == true && roomArray[i].Down == true && roomArray[i].Left == false) { //D Top left  room
+
+			roomArray[i].SetImage(room1);
+			continue;
+		}
+		if (roomArray[i].Up == false && roomArray[i].Right == true && roomArray[i].Down == true && roomArray[i].Left == true) { //D Top middle room
+
+			roomArray[i].SetImage(room2);
+			continue;
+		}
+		if (roomArray[i].Up == false && roomArray[i].Right == false && roomArray[i].Down == true && roomArray[i].Left == true) { //D Top right  room
+
+			roomArray[i].SetImage(room3);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == true && roomArray[i].Down == true && roomArray[i].Left == false) { //D Middle left room
+
+			roomArray[i].SetImage(room4);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == true && roomArray[i].Down == true && roomArray[i].Left == true) { //D  Middle room
+
+			roomArray[i].SetImage(room5);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == false && roomArray[i].Down == true && roomArray[i].Left == true) { //D  Middle right room
+
+			roomArray[i].SetImage(room6);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == true && roomArray[i].Down == false && roomArray[i].Left == false) { //D  Bottom Left room
+
+			roomArray[i].SetImage(room7);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == true && roomArray[i].Down == false && roomArray[i].Left == true) { //D  Bottom middle room
+
+			roomArray[i].SetImage(room8);
+			continue;
+		}
+		if (roomArray[i].Up == true && roomArray[i].Right == false && roomArray[i].Down == false && roomArray[i].Left == true) { //D  Bottom right room
+
+			roomArray[i].SetImage(room9);
+			continue;
+		}
+	}
+
 }
 
 void RoomManager::MoveRooms(int direction)
