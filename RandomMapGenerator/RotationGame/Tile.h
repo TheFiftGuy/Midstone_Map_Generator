@@ -13,9 +13,9 @@ class Tile : public GameObject, public Physics
 {
 
 	//D scott tesint stuff here
-	////CHANGES HERE
-	//Tile(const Tile&) = delete;
-	//Tile& operator = (const Tile&) = delete;
+	//CHANGES HERE
+	//Tile(const Tile&);
+	//Tile& operator = (const Tile&);
 
 public:
 	int height;

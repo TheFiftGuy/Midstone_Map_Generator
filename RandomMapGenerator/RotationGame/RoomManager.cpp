@@ -45,9 +45,6 @@ void RoomManager::roomInput(){ //D This is where user input for the rooms is don
 		rectArray.push_back(SDL_Rect());
 	}
 
-	//roomArray = new Tile[roomCount]();
-	//screenCoordsArray = new Vec3[roomCount];
-	//rectArray = new SDL_Rect[roomCount];
 
 }
 
@@ -121,7 +118,7 @@ void RoomManager::CreateRoom(int sideNumber, int roomNumber)
 
 		for (int i = 0; i < currentRoomCount; i++)
 		{
-			if (roomArray[i].GetPosition().x == tempTile.GetPosition().x && roomArray[i].GetPosition().y == tempTile.GetPosition().y)
+			if (roomArray[i].GetPosition().x == tempTile.GetPosition().x && roomArray[i].GetPosition().y == tempTile.GetPosition().y) //D this checks every room generated so far, to see if its located where tempTile wants to go
 			{
 				openSpace = false;
 			}
@@ -259,13 +256,13 @@ void RoomManager::CreateBranches(int branches, int branchRoomNumber, int sideOri
 	//K: switch statement to check which side the creator of the splitting tile is from, to avoid attempting to generate on top of the already existing path it came from.
 	switch (sideOrigin)
 	{
-	case 1:
+	case 1: //so if "this room" was a "generate up" room, there is no space "down"
 		branchDirectionArray[2] = true;
 		break;
-	case 2:
+	case 2: // ^ same but right
 		branchDirectionArray[3] = true;
 		break;
-	case 3:
+	case 3:// ect...
 		branchDirectionArray[0] = true;
 		break;
 	case 4:
